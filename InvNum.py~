@@ -16,6 +16,13 @@ class InverseNumber:
             if first[fIndex][0] > second[sIndex][0]:
                 first[fIndex][1] = first[fIndex][1] + len(second) - sIndex
                 result.append(first[fIndex])
+#introduce dict
+                if first[fIndex][0] not in self.dictNum:
+                    self.dictNum[first[fIndex][0]] = ()
+                    
+                for j in range(sIndex, len(second)):
+                    self.dictNum[first[fIndex][0]] += ((first[fIndex][0], second[j][0]),)
+                    
                 fIndex = fIndex + 1
             else:
                 result.append(second[sIndex])
@@ -31,6 +38,7 @@ class InverseNumber:
 
     def GetInverseNum(self,arr):
         self.invNum = 0
+        self.dictNum = {}
         self.final = self.MergeSort(arr)
         for num in self.final:
             self.invNum += num[1]
