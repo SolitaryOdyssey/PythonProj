@@ -1,0 +1,5 @@
+class test:
+    count = 0
+    def RefCount(self):
+        count += 1
+        return count
